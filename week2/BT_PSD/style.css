@@ -1,34 +1,48 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.block1{
-    
-    background-image: url(./img/bg_img.jpg);
-    width: 100%;
+.block1 {
+  background-image: url(./img/bg_img.jpg);
 }
-.block1 .header{
-    background: rgba(1,1,1,0.6);
-    
+.block1 .header {
+  background: rgba(1, 1, 1, 0.6);
 }
-.block1 .menu{
-    height: 150px;
+.block1 .content {
+  height: 650px;
+  font-size: 24px;
 }
-.block1 .content{
-    height: 650px;
-    font-size: 24px;
+.block1 .content p {
+  background: rgba(1, 1, 1, 0.4);
 }
-.block1 .content p{
-    background: rgba(1,1,1,0.4);
+.block1 .logo,
+.block2 .services,
+.block3 .portfolio,
+.block4 .title,
+.block5 .title,
+.block6 .title,
+.block7 .title,
+.block8 .title {
+  font-size: 24px;
 }
+
 /* /block1 */
-.block2{
-background: #619bad;
-width: auto;
-height: 400px;
+.block2 {
+  background: #60cdef;
 }
-.column1{
-    width: 20%;
-    height: 175px;
+#underline {
+  text-decoration: underline;
+}
+.block4 {
+  background: rgba(1, 1, 1, 0.6);
+}
+.block5 {
+  background: #60cdef;
+}
+.block6 {
+  background: url(./img/wwhat-is.png) rgba(1, 1, 1, 1);
+}
+.block8 {
+  background: url(./img/contact-bg.png) rgba(1, 1, 1, 1);
 }
