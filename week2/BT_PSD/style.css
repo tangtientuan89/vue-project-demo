@@ -24,7 +24,7 @@
 .block6 .title,
 .block7 .title,
 .block8 .title {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 /* /block1 */
@@ -43,6 +43,13 @@
 .block6 {
   background: url(./img/wwhat-is.png) rgba(1, 1, 1, 1);
 }
+.block6 #icon{
+    height: 36px;
+    width: 36px;
+}
 .block8 {
   background: url(./img/contact-bg.png) rgba(1, 1, 1, 1);
+}
+.block8 .form-control{
+    background: none;
 }
