@@ -70,5 +70,7 @@ width: 100%;
 }
 .block8 .form-control{
     background-color: rgba(1, 1, 1, 0);
+}.block8 .form-control:focus{
+  background-color: rgba(1, 1, 1, 0);
 }
 
