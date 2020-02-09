@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link type="text/css" rel="stylesheet" href="/public/flaviusmatis-simplePagination.js-e32c66e/simplePagination.css" />
+<link rel="stylesheet" href="/public/stylesheets/style.css">
+
+<body>
+    <div class="container d-flex flex-column justify-content-center my-5 p-0">
+        <!-- add new todo -->
+        <div>  
+            <button id="btn-logout" type="button">Logout</button>
+        </div>
+        <div class="addNew">
+            <div class="d-flex my-3">
+                <button class="btn-info align-self-start mx-3 rounded-circle" type="button" id="modal-add"
+                    onclick="btnAdd()"><img class="icon m-2" src="/public/images/icon/plus.png" alt=""></button>
+                <label for="modal-add">
+                    <h3 class="font-weight-bold m-0">Add New</h3>
+                </label>
+            </div>
+        </div>
+
+        <div class="container content">
+            <div class="row text-light py-3">
+                <h4 class="col-4 text-center">Title</h4>
+                <h4 class="col-5 text-center">Content</h4>
+            </div>
+            <!-- modal -->
+            <div class="modal" id="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <input type="text" class="modal-title" id="modal-title" name="textTitle"></input>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <textarea type="text" class="modal-body" id="modal-content" name="textContent"></textarea>
+                        <div class="modal-footer">
+                            <div><button type="button" class="btn btn-primary" id="modal-update">Save changes</button>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- data.js -->
+            <div class="" id="data"></div>
+
+            <!-- pagination -->
+            <div class="d-flex justify-content-center py-3" id="pagination"></div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script type="text/javascript"
+    src="/public/flaviusmatis-simplePagination.js-e32c66e/jquery.simplePagination.js"></script>
+<script src="/public/javascripts/taskData.js"></script>
+
+</html>
