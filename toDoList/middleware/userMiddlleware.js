@@ -2,12 +2,11 @@ var jwt = require('jsonwebtoken');
 var UserModel=require('../model/UserModel');
 
 function userMiddleware(req, res, next) {
-    var token = req.cookies.token|| req.headers.cookie.split('=')[1]
+    var token = req.cookies.token|| //req.headers.cookie.split('=')[1]
     console.log('cookie '+req.cookies.token);
-    // if (req.headers.authority) {
-    //     token = req.headers.authority.split('=')[1]
-    // }
-    console.log('headers '+req.headers.cookie.split('=')[1]);
+    if (req.headers.cookie) {
+        token = req.headers.cookie.split('=')[1]
+    }
     if (token) {
         var userDecode = jwt.verify(token, 'nodemy');
         console.log('userDecode: '+userDecode.data);

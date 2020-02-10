@@ -1,0 +1,17 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background: linear-gradient(0deg, rgb(0, 0, 0), rgb(59, 59, 59));
+    background-attachment: fixed;
+    color: white;
+  }
+  .container{
+    height: 100hv;
+    width: auto;
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+  }
