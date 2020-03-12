@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link type="text/css" rel="stylesheet" href="/public/flaviusmatis-simplePagination.js-e32c66e/simplePagination.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="/public/stylesheets/doList.css">
+
+<body>
+    <div class="container">
+        <!-- add new todo -->
+        <div class="btn-header">
+            <div class="admin"></div>
+            <a href="/change-password"><button class="btn-changePassword" id="btn-changePassword">Change
+                    Password</button></a>
+            <button type="button" class="btn-logout" id="btn-logout">Logout</button>
+        </div>
+        <div class="addNew">
+            <div class="modal-add" id="modal-add" onclick="btnAdd()"><img class="icon"
+                    src="/public/images/icon/Apps-Dialog-Add-icon.png" alt=""></div>
+            <label for="modal-add" onclick="btnAdd()">Add New</label>
+        </div>
+
+        <div class="data">
+            <div class="row text-light py-3">
+                <h4 class="col-4 text-center">Title</h4>
+                <h4 class="col-5 text-center">Content</h4>
+            </div>
+            <!-- modal -->
+            <div class="modal" id="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <input type="text" class="modal-title" id="modal-title" name="textTitle"></input>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <textarea type="text" class="modal-body" id="modal-content" name="textContent"></textarea>
+                        <div class="modal-footer">
+                            <div><button type="button" class="btn btn-primary" id="modal-update">Save changes</button>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- data.js -->
+            <div class="" id="data"></div>
+        </div>
+    </div>
+    <!-- pagination -->
+    <div class="d-flex justify-content-center" id="pagination"></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+<script type="text/javascript"
+    src="/public/flaviusmatis-simplePagination.js-e32c66e/jquery.simplePagination.js"></script>
+<script src="/public/javascripts/doList.js"></script>
+
+</html>

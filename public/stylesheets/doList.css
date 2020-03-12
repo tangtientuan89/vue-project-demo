@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(0deg, rgb(0, 0, 0), rgb(59, 59, 59));
+  background-attachment: fixed;
+}
+.container {
+  padding: 2rem;
+}
+.btn-header {
+  display: flex;
+  justify-content: flex-end;
+}
+button {
+  height: 2.5rem;
+  width: 6rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  outline-style: none;
+ line-height: 1rem;
+}
+button:focus{
+  outline-style: none;
+}
+.btn-changePassword,.btn-edit {
+  background: #007bff;
+}
+.btn-logout,.btn-delete {
+  background: #7f858c;
+}
+.btn-admin{
+  background: brown;
+}
+
+button:hover {
+  background-color: #f37748;
+}
+.addNew {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.addNew label {
+  font-size: 2rem;
+  padding-left: 1rem;
+  cursor: pointer;
+}
+.icon {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin-left: 1rem;
+}
+
+/* data */
+.data{
+  background: #3c3c3c;
+  height: 65vh;
+  width: auto;
+}
+.dolistTitle,.dolistContent{
+  overflow: hidden;
+  cursor: pointer;
+}

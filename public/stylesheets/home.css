@@ -1,0 +1,160 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(0deg, rgb(0, 0, 0), rgb(59, 59, 59));
+  background-attachment: fixed;
+  color: white;
+}
+.container {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+.header {
+  height: 95vh;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.header .text1 {
+  height: 8rem;
+  font-size: 5rem;
+  font-weight: bold;
+  animation: text1 3s;
+}
+.header .text2 {
+  height: 5rem;
+  font-size: 2rem;
+  font-style: italic;
+  text-align: center;
+  animation: text2 2s 1.5s;
+}
+.header .btn {
+  height: 3rem;
+  animation: btn 2s 2.5s;
+}
+.btn-register{
+  background-color: #7f858c;
+}
+button {
+  height: 3rem;
+  width: 8rem;
+  margin: 1rem;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 5px;
+  border: #007bff;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+.header button:hover {
+  border: #f37748;
+  background-color: #f37748;
+}
+.header button:focus {
+  outline-style: none;
+}
+
+footer {
+  text-align: center;
+}
+
+.pulse {
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 40rem;
+}
+circle {
+  fill: #ff5154;
+  transform: scale(0);
+  opacity: 0;
+  transform-origin: 50% 50%;
+  animation: pulse 2.5s cubic-bezier(0.5, 0.5, 0, 1);
+}
+circle:nth-child(2) {
+  fill: #7fc6a4;
+  animation: pulse 2.5s 1.5s cubic-bezier(0.5, 0.5, 0, 1);
+}
+
+circle:nth-child(3) {
+  fill: #e5f77d;
+  animation: pulse 2.5s 2.5s cubic-bezier(0.5, 0.5, 0, 1);
+}
+
+@keyframes pulse {
+  25% {
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes text1 {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes text2 {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes btn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header .text1 {
+    height: 6rem;
+    font-size: 3rem;
+    font-weight: bold;
+    animation: text1 3s;
+  }
+  .header .text2 {
+    height: 5rem;
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: center;
+    animation: text2 2s 1.5s;
+  }
+}
