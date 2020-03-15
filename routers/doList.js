@@ -39,6 +39,26 @@ router.get('/api/do-list', checkUsers, function (req, res, next) {
     })
 })
 
+//seach
+router.get('/api/do-list/:search', checkUsers,function(req,res,next){
+    let search = req.params.search
+    DoListModel.find({ title: { '$regex': `${search}` }, author: req.locals._id })
+        .then(function (data) {
+            res.json({
+                code: 200,
+                data: data,
+                message: 'success'
+            })
+        })
+        .catch(function (err) {
+            res.json({
+                code: 404,
+                error: err,
+                message: err
+            })
+        })
+})
+
 //create do list
 router.post('/api/do-list', checkUsers, function (req, res, next) {
   let title = req.body.title

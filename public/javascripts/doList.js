@@ -101,13 +101,41 @@ function btnView(title, content) {
     $('#modal-content').val(content)
 }
 
-
+//button search
+$('#btn-search').click(function () {
+    let search = $('#search').val()
+    $.ajax({
+        type: "GET",
+        url: "/api/do-list/" + search,
+        dataType: "json"
+    })
+        .then(function (data) {
+            if (data.code == 200) {
+                // return render(data.data)
+                $('#data').html('')
+                data.data.forEach(element => {
+                    $('#data').append(`
+                    <div class="d-flex row">
+                        <h5 class="dolistTitle col-4 text-light" onClick="btnView('${element.title}','${element.content}')">${element.title}</h5>
+                        <div class="dolistContent col-5 text-light" onClick="btnView('${element.title}','${element.content}')">${element.content}</div>
+                        <div class="col-3 d-flex">
+                            <button class="btn-edit" type="button" onClick="btnEdit('${element.title}','${element.content}','${element._id}')">Edit</button>
+                            <button class="btn-delete" type="button" onClick="btnDelete('${element._id}')">Delete</button>
+                        </div>
+                    </div>
+                `)
+                });
+            }
+            if (data.code == 404) {
+                return $('#list-users').html(data.message)
+            }
+        })
+})
 
 
 //button edit
 function btnEdit(title, content, id) {
     doListStatus = 'edit';
-
     $('#modal').modal('show')
     $('#modal-title').prop("disabled", true)
     $('#modal-content').prop("disabled", false)
@@ -144,7 +172,6 @@ function btnEdit(title, content, id) {
 //button delete
 function btnDelete(id) {
     doListStatus = 'delete';
-    console.log('id ', id);
     $.ajax({
         type: "DELETE",
         url: "/api/do-list?id=" + id,
@@ -183,12 +210,10 @@ function btnAdd() {
             content: content
         }
         var token = document.cookie
-        console.log(token);
         $.ajax({
             beforeSend: function (xhr, settings) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + token)
             },
-
             type: "POST",
             url: "api/do-list",
             data: data,
@@ -198,7 +223,6 @@ function btnAdd() {
                 if (data.code == 404) {
                     return alert(data.message)
                 }
-
             })
             .catch(function (err) {
                 window.location.href = '/login';
@@ -212,7 +236,6 @@ function btnAdd() {
 //button logout
 $('#btn-logout').on('click', function () {
     let token = document.cookie.split('=')[1]
-    console.log(token);
     $.ajax({
         type: "POST",
         url: "/logout",

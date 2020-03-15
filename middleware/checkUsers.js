@@ -20,7 +20,6 @@ module.exports = function userMiddleware(req, res, next) {
                     if (user.status == 'blocked') {
                         throw 'account has been blocked'
                     }
-                    console.log('user ',user);
                     req.locals = user;
                     return next();
                 })

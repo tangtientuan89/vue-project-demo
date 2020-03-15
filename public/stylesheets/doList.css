@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background: linear-gradient(0deg, rgb(0, 0, 0), rgb(59, 59, 59));
+  background: linear-gradient(0deg, rgb(0, 0, 0), rgb(80, 80, 80));
   background-attachment: fixed;
 }
 .container {
@@ -24,7 +24,11 @@ button {
   border: none;
   color: white;
   outline-style: none;
- line-height: 1rem;
+  line-height: 1rem;
+  word-break: normal;
+  text-align: center;
+  /* display: inline-block;
+  word-wrap: break-word; */
 }
 button:focus{
   outline-style: none;
@@ -41,6 +45,13 @@ button:focus{
 
 button:hover {
   background-color: #f37748;
+}
+.search{
+  text-align: center;
+}
+.search input{
+  height: 2rem;
+  padding: 1rem;
 }
 .addNew {
   display: flex;
@@ -66,7 +77,7 @@ button:hover {
 /* data */
 .data{
   background: #3c3c3c;
-  height: 65vh;
+  height: 55vh;
   width: auto;
 }
 .dolistTitle,.dolistContent{

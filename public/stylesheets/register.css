@@ -4,9 +4,17 @@
   box-sizing: border-box;
 }
 body {
-  background: linear-gradient(0deg, rgb(0, 0, 0), rgb(59, 59, 59));
+  background: linear-gradient(0deg, rgb(0, 0, 0), rgb(80, 80, 80));
   background-attachment: fixed;
   color: white;
+}
+.container {
+  height: 100vh;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .form-register {
     background: #3e4440;
@@ -17,30 +25,16 @@ body {
   border-radius: 5px;
   border: white;
 }
-
 .form-group{
     display: grid;
     padding:1rem 1.5rem 1rem 1.5rem;
-}
-.form-check{
-    display: flex;
-    padding-left: 1.5rem;  
-}
-.container {
-  height: 100vh;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .btn-register{
    padding: 2rem 1.5rem 2rem 1.5rem;
 }
 button {
-  height: 3rem;
+  height: 2.5rem;
   width: 100%;
-  padding: 1rem;
   cursor: pointer;
   border-radius: 5px;
   border: #007bff;
