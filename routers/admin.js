@@ -72,20 +72,13 @@ router.delete('/api/admin/:id', checkUsers, function (req, res, next) {
         var id = req.params.id
         UserModel.deleteOne({ _id: id })
             .then(function (value) {
-                DoListModel.deleteMany({ author: id })
-                    .then(function (value) {
-                        res.json({
-                            code: 200,
-                            message: 'delete success'
-                        })
-                    })
-                    .catch(function (err) {
-                        res.json({
-                            code: 404,
-                            error: err,
-                            message: err
-                        })
-                    })
+                return DoListModel.deleteMany({ author: id })
+            })
+            .then(function (value) {
+                res.json({
+                    code: 200,
+                    message: 'delete success'
+                })
             })
             .catch(function (err) {
                 res.json({
@@ -94,12 +87,13 @@ router.delete('/api/admin/:id', checkUsers, function (req, res, next) {
                     message: err
                 })
             })
-
     } else {
         res.json({
+            code: 404,
+            error: null,
             message: 'not admin'
         })
-    }
+    }   
 
 })
 

@@ -14,7 +14,7 @@ body {
   display: flex;
   justify-content: flex-end;
 }
-button {
+.container button {
   height: 2.5rem;
   width: 6rem;
   margin-bottom: 1rem;
@@ -30,28 +30,34 @@ button {
   /* display: inline-block;
   word-wrap: break-word; */
 }
-button:focus{
+button:focus {
   outline-style: none;
 }
-.btn-changePassword,.btn-edit {
+.btn-changePassword,
+.btn-edit {
   background: #007bff;
 }
-.btn-logout,.btn-delete {
+.btn-logout,
+.btn-delete {
   background: #7f858c;
 }
-.btn-admin{
+.btn-admin {
   background: brown;
 }
 
 button:hover {
   background-color: #f37748;
 }
-.search{
+.search {
   text-align: center;
 }
-.search input{
+.search input {
   height: 2rem;
   padding: 1rem;
+  border-radius: 5px;
+}
+.search button {
+  color: black;
 }
 .addNew {
   display: flex;
@@ -61,7 +67,6 @@ button:hover {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-
 .addNew label {
   font-size: 2rem;
   padding-left: 1rem;
@@ -75,12 +80,13 @@ button:hover {
 }
 
 /* data */
-.data{
+.data {
   background: #3c3c3c;
   height: 55vh;
   width: auto;
 }
-.dolistTitle,.dolistContent{
+.dolistTitle,
+.dolistContent {
   overflow: hidden;
   cursor: pointer;
 }

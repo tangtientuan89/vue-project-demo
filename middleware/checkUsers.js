@@ -14,6 +14,9 @@ module.exports = function userMiddleware(req, res, next) {
             let userDecode = jwt.verify(token, 'nodemy');
             UserModel.findOne({ email: userDecode.email })
                 .then(function (user) {
+                    if(!user){
+                        throw 'error find account in system'
+                    }
                     if (user.verified == false) {
                         throw 'Account unverified, Please check email.'
                     }

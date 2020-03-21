@@ -24,26 +24,21 @@ router.post('/forgot-password', function (req, res, next) {
     UserModel.findOne({ email: email })
         .then(function (value) {
             if (value) {
-                bcrypt.hash(password, saltRounds, function (err, hash) {
-                    UserModel.updateOne({ email: email }, { password: hash })
-                        .then(function (value) {
-                            sendMail(email, 'new password', html)
-                            res.json({
-                                code: 200,
-                                message: 'success'
-                            })
-                        })
-                        .catch(function (err) {
-                            res.json({
-                                code: 404,
-                                error: err,
-                                message: err
-                            })
-                        })
-                })
-            } else {
+                return bcrypt.hash(password, saltRounds)
+            }
+            else {
                 throw 'Account not actived'
             }
+            })
+        .then(function (hash) {
+            return UserModel.updateOne({ email: email }, { password: hash })
+        })
+        .then(function (value) {
+            sendMail(email, 'new password', html)
+            res.json({
+                code: 200,
+                message: 'success'
+            })
         })
         .catch(function (err) {
             res.json({

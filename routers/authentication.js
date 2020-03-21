@@ -10,9 +10,6 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 // const saltRounds = 10;
 
-
-
-
 router.get('/login', function (req, res, next) {
     res.sendFile(path.join(__dirname, '../views/login.html'))
 })
@@ -51,7 +48,6 @@ router.get('/login', function (req, res, next) {
 
 router.post('/login', function (req, res, next) {
     passport.authenticate('local', { session: false }, function (err, user, info) {
-
         if (!user || err) {
             return res.json({
                 code: 400,
@@ -76,14 +72,6 @@ router.post('/login', function (req, res, next) {
         });
     })(req, res, next);
 });
-
-
-
-
-
-
-
-
 
 //logout
 router.post('/logout', function (req, res, next) {

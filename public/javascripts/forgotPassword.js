@@ -11,7 +11,7 @@ $('#btn-forgotPassword').click(function () {
     })
         .then(function (data) {
             if (data.code == 200) {
-                return $('#text').html('A new password will sent to your email').css({'color':'white'})
+                return $('#text').html('A new password will sent to your email').css({'color':'green'})
             }
             if (data.code == 404) {
                 $('#text').html(data.message).css({'color':'red'})

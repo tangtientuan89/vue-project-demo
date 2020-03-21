@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<link rel="stylesheet" href="/public/stylesheets/admin.css">
+  </head>
+  <link rel="stylesheet" href="/public/stylesheets/admin.css" />
 
-<body>
+  <body>
     <div class="container">
-        <p>ADMIN</p>
-        <label for="search">Search</label>
-        <input id="search" type="text">
+      <div class="btn-header">
+        <button type="button" class="btn-logout" id="btn-logout">Logout</button>
+      </div>
+      <p>ADMIN</p>
+      <div class="search">
+        <input id="search" type="text" />
         <button id="btn-search">Search</button>
-        <div id="list-users">
-        </div>
+      </div>
+      <div id="list-users"></div>
     </div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="/public/javascripts/admin.js"></script>
-
+    crossorigin="anonymous"
+  ></script>
+  <script src="/public/javascripts/admin.js"></script>
+  <script src="/public/javascripts/btnLogout.js"></script>
 </html>

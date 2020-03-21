@@ -22,7 +22,6 @@
             <button type="button" class="btn-logout" id="btn-logout">Logout</button>
         </div>
         <div class="search">
-            <label for="search">Search</label>
             <input id="search" type="text">
             <button id="btn-search">Search</button>
         </div>
@@ -37,31 +36,31 @@
                 <h4 class="col-4 text-center">Title</h4>
                 <h4 class="col-5 text-center">Content</h4>
             </div>
-            <!-- modal -->
-            <div class="modal" id="modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <input type="text" class="modal-title" id="modal-title" name="textTitle"></input>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <textarea type="text" class="modal-body" id="modal-content" name="textContent"></textarea>
-                        <div class="modal-footer">
-                            <div><button type="button" class="btn btn-primary" id="modal-update">Save changes</button>
-                            </div>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- data.js -->
             <div class="" id="data"></div>
         </div>
     </div>
     <!-- pagination -->
     <div class="d-flex justify-content-center" id="pagination"></div>
+     <!-- modal -->
+     <div class="modal" id="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="text" class="modal-title" id="modal-title" name="textTitle"></input>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <textarea type="text" class="modal-body" id="modal-content" name="textContent"></textarea>
+                <div class="modal-footer">
+                    <div><button type="button" class="btn btn-primary" id="modal-update">Save changes</button>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
