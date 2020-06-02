@@ -18,6 +18,6 @@ setTimeout(function () {
 //////
 setTimeout(function () {
     $('.btn').html('<a href="/login"><button class="btn-login">Login</button></a><a href="/register"><button class="btn-register">Register</button></a>')
-}, 2600)
+}, 2700)
 
 

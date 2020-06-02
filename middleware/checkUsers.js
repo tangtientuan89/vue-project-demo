@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
 const UserModel = require('../model/UserModel');
 const arrBlacklistToken = require('../config/blacklistToken');
-
 module.exports = function userMiddleware(req, res, next) {
+    console.log(req.headers.authorization)
     try {
-        var token = req.cookies.token || req.headers.authorization.trim().split(' ')[1]
+        let token = req.cookies.token || req.headers.authorization.split('token=')[1].split(";")[0]
         if (token) {
+           
             if (arrBlacklistToken.includes(token)) {
                 return res.json({
                     message: 'token has been blacklisted'
@@ -35,10 +36,19 @@ module.exports = function userMiddleware(req, res, next) {
                 })
         }
         else {
-            return res.redirect('/login')
+            return res.json({
+                code: 404,
+                error: 'token is false',
+                message: 'token is false'
+            })
         }
     } catch (err) {
-        res.redirect('/login')
+        console.log('err ',err)
+        res.json({
+            code:404,
+            err:err,
+            message:err
+        })
     }
 
 

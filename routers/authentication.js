@@ -1,18 +1,14 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-const checkUsers = require('../middleware/checkUsers');
-const UserModel = require('../model/UserModel');
-const path = require('path');
-const arrBlacklistToken = require('../config/blacklistToken');
-const passport = require('passport');
-const bcrypt = require('bcrypt');
+const checkUsers = require("../middleware/checkUsers");
+const UserModel = require("../model/UserModel");
+const path = require("path");
+const arrBlacklistToken = require("../config/blacklistToken");
+const passport = require("passport");
+const bcrypt = require("bcrypt");
 // const saltRounds = 10;
-
-router.get('/login', function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../views/login.html'))
-})
 
 // Login
 // router.post('/login', function (req, res, next) {
@@ -46,57 +42,51 @@ router.get('/login', function (req, res, next) {
 //         })
 // })
 
-router.post('/login', function (req, res, next) {
-    passport.authenticate('local', { session: false }, function (err, user, info) {
-        if (!user || err) {
-            return res.json({
-                code: 400,
-                error:err,
-                message: info
-            });
-        }
-        req.logIn(user, { session: false }, function (err) {
-            if (err) {
-                return res.json({
-                    code: 400,
-                    error:err,
-                    message: err
-                });
-            }
-            var token = jwt.sign({ email: user.email }, 'nodemy', { expiresIn: '24h' })
-            return res.json({
-                code:200,
-                token: token,
-                type: user.type
-            });
+router.post("/login", function (req, res, next) {
+  passport.authenticate("local", { session: false }, function (
+    err,
+    user,
+    info
+  ) {
+    if (!user || err) {
+      return res.json({
+        code: 400,
+        error: err,
+        message: info,
+      });
+    }
+    req.logIn(user, { session: false }, function (err) {
+      console.log("user ", user);
+      if (err) {
+        return res.json({
+          code: 400,
+          error: err,
+          message: err,
         });
-    })(req, res, next);
+      }
+      var token = jwt.sign({ email: user.email }, "nodemy", {
+        expiresIn: "24h",
+      });
+      console.log("auth ", { code: 200, token: token, type: user.type });
+      return res.json({
+        code: 200,
+        token: token,
+        type: user.type,
+      });
+    });
+  })(req, res, next);
 });
 
 //logout
-router.post('/logout', function (req, res, next) {
-    req.logout();
-    var token = req.cookies.token
-    arrBlacklistToken.push(token)
-    console.log(arrBlacklistToken);
-    res.clearCookie('type', {path: '/'});
-    res.json({
-        message: 'push token to blacklist success'
-    })
-})
+router.post("/logout", function (req, res, next) {
+  req.logout();
+  var token = req.cookies.token;
+  arrBlacklistToken.push(token);
+  console.log(arrBlacklistToken);
+  res.clearCookie("type", { path: "/" });
+  res.json({
+    message: "push token to blacklist success",
+  });
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = router 
+module.exports = router;

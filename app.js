@@ -5,6 +5,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
+var cors = require('cors')
+app.use(cors())
 app.use(helmet());
 const indexRouter = require("./routers/index");
 const doListRouter = require("./routers/doList");
@@ -14,6 +16,7 @@ const verifyRouter = require("./routers/verify");
 const changePasswordRouter = require("./routers/changePassword");
 const forgotPasswordRouter = require("./routers/forgotPassword");
 const authenticationRouter = require("./routers/authentication");
+const upload=require('./routers/upload');
 const passport = require("passport");
 const rateLimiter = require("./config/rateLimiter");
 
@@ -33,6 +36,7 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 
 require("./config/passport2")(passport);
 
+app.use("/upload",upload)
 app.use("/", authenticationRouter);
 app.use("/", indexRouter);
 app.use("/", doListRouter);
