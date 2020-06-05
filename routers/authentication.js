@@ -79,14 +79,24 @@ router.post("/login", function (req, res, next) {
 
 //logout
 router.post("/logout", function (req, res, next) {
-  req.logout();
-  var token = req.cookies.token;
+try{
+  let token = req.headers.authorization.split('token=')[1].split(";")[0]
   arrBlacklistToken.push(token);
-  console.log(arrBlacklistToken);
-  res.clearCookie("type", { path: "/" });
-  res.json({
+  console.log("arrBlacklistToken ", arrBlacklistToken);
+  req.logout();
+  // res.clearCookie("token",{path: '/'});
+  return res.json({
+    code:200,
     message: "push token to blacklist success",
   });
+}
+catch(err){
+res.json({
+  code:401,
+  message:"pls login"
+})
+}
+
 });
 
 module.exports = router;

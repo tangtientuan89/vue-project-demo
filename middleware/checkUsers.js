@@ -4,11 +4,12 @@ const arrBlacklistToken = require('../config/blacklistToken');
 module.exports = function userMiddleware(req, res, next) {
     console.log(req.headers.authorization)
     try {
-        let token = req.cookies.token || req.headers.authorization.split('token=')[1].split(";")[0]
+        let token = req.headers.authorization.split('token=')[1].split(";")[0]
         if (token) {
            
             if (arrBlacklistToken.includes(token)) {
                 return res.json({
+                    code:404,
                     message: 'token has been blacklisted'
                 })
             }

@@ -5,7 +5,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
-var cors = require('cors')
+const cors = require('cors')
 app.use(cors())
 app.use(helmet());
 const indexRouter = require("./routers/index");
