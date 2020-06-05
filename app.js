@@ -35,6 +35,9 @@ app.use(passport.session());
 app.use("/public", express.static(path.join(__dirname, "public")));
 
 require("./config/passport2")(passport);
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './build/index.html'));
+});
 
 app.use("/upload",upload)
 app.use("/", authenticationRouter);
@@ -52,6 +55,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
+
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;

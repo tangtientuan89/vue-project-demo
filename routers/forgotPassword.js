@@ -11,10 +11,6 @@ const saltRounds = 10;
 //////
 
 
-router.get('/forgot-password', function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../views/forgotPassword.html'))
-})
-
 // forgotPassword
 router.post('/forgot-password', function (req, res, next) {
     let email = req.body.email;

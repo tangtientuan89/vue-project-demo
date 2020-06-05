@@ -7,9 +7,6 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-router.get('/register', function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../views/register.html'))
-})
 
 //register account
 router.post('/register', function (req, res, next) {

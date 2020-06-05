@@ -6,9 +6,6 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 //////
-router.get('/change-password', checkUsers, function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../views/changePassword.html'))
-})
 //change password
 router.post('/change-password', checkUsers, function (req, res, next) {
     let password = req.body.password
