@@ -36,7 +36,7 @@ const saltRounds = 10;
 //search users(admin use)
 router.get("/api/admin", checkUsers, function (req, res, next) {
   if (req.locals.type == 1) {
-    let search = req.query.search;
+    let search = req.query.search || "";
     console.log("search", search);
     UserModel.find({ email: { $regex: `${search}` }, type: 3 })
       .then(function (data) {
@@ -57,7 +57,7 @@ router.get("/api/admin", checkUsers, function (req, res, next) {
     res.json({
       code: 404,
       error: null,
-      message: "not admin",
+      message: "you're not admin",
     });
   }
 });
@@ -96,7 +96,7 @@ router.put("/api/admin", checkUsers, function (req, res, next) {
   if (req.locals.type == 1) {
     let id = req.query.id;
     let status = req.query.status;
-    console.log("id status",id,status)
+    console.log("id status", id, status);
     UserModel.findByIdAndUpdate({ _id: id }, { status: `${status}` })
       .then(function (value) {
         res.json({

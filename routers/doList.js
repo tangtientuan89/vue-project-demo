@@ -36,9 +36,8 @@ router.get("/api/total", checkUsers, function (req, res, next) {
 
 //seach
 router.get("/api/to-do-list", checkUsers, function (req, res, next) {
-  let search = req.query.search;
+  let search = req.query.search||'';
   // let pagesNum = parseInt(req.query.pages) || 1;
-  console.log("search", search);
   DoListModel.find({ title: { $regex: `${search}` }, author: req.locals._id })
     .then(function (data) {
       res.json({
@@ -93,6 +92,7 @@ router.put("/api/to-do-list", checkUsers, function (req, res, next) {
 //delete do list
 router.delete("/api/to-do-list", checkUsers, function (req, res, next) {
   let id = req.query.id;
+  console.log('id',id)
   DoListModel.deleteOne({ _id: id })
     .then(function (value) {
       res.json(value);

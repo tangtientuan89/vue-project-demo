@@ -2,11 +2,11 @@ const jwt = require('jsonwebtoken');
 const UserModel = require('../model/UserModel');
 const arrBlacklistToken = require('../config/blacklistToken');
 module.exports = function userMiddleware(req, res, next) {
-    console.log(req.headers.authorization)
+    console.log('header ',req.headers.authorization)
     try {
         let token = req.headers.authorization.split('token=')[1].split(";")[0]
         if (token) {
-           
+            console.log('token ',token)
             if (arrBlacklistToken.includes(token)) {
                 return res.json({
                     code:404,

@@ -67,11 +67,12 @@ router.post("/login", function (req, res, next) {
       var token = jwt.sign({ email: user.email }, "nodemy", {
         expiresIn: "24h",
       });
-      console.log("auth ", { code: 200, token: token, type: user.type });
+      console.log("auth ", { code: 200, token: token, type: user.type , user:user.email,});
       return res.json({
         code: 200,
         token: token,
         type: user.type,
+        user:user.email,
       });
     });
   })(req, res, next);
