@@ -9,8 +9,9 @@ const helmet = require("helmet");
 const cors = require("cors");
 // app.use(express.static(__dirname + "/dist/"));
 
-app.use(serveStatic(__dirname + "/dist"));
+
 app.use(cors());
+app.use(serveStatic(__dirname + "/dist"));
 app.use(helmet());
 app.get(/.*/, function (req, res) {
   res.sendFile(__dirname + "/dist/index.html");
