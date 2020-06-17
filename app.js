@@ -7,15 +7,13 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
+
 // app.use(express.static(__dirname + "/dist/"));
-
-
-app.use(cors());
 app.use(serveStatic(__dirname + "/dist"));
+app.use(cors());
+
 app.use(helmet());
-app.get(/.*/, function (req, res) {
-  res.sendFile(__dirname + "/dist/index.html");
-});
+
 const indexRouter = require("./routers/index");
 const doListRouter = require("./routers/doList");
 const adminRouter = require("./routers/admin");
@@ -52,7 +50,9 @@ app.use("/", registerRouter);
 app.use("/", verifyRouter);
 app.use("/", changePasswordRouter);
 app.use("/", forgotPasswordRouter);
-
+app.get(/.*/, function (req, res) {
+  res.sendFile(__dirname + "/dist/index.html");
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
