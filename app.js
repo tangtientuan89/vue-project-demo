@@ -2,15 +2,19 @@ const createError = require("http-errors");
 const express = require("express");
 const app = express();
 const path = require("path");
-const serveStatic = require('serve-static');
+const serveStatic = require("serve-static");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
-const cors = require('cors')
+const cors = require("cors");
+// app.use(express.static(__dirname + "/dist/"));
 
 app.use(serveStatic(__dirname + "/dist"));
-app.use(cors())
+app.use(cors());
 app.use(helmet());
+app.get(/.*/, function (req, res) {
+  res.sendFile(__dirname + "/dist/index.html");
+});
 const indexRouter = require("./routers/index");
 const doListRouter = require("./routers/doList");
 const adminRouter = require("./routers/admin");
@@ -19,7 +23,7 @@ const verifyRouter = require("./routers/verify");
 const changePasswordRouter = require("./routers/changePassword");
 const forgotPasswordRouter = require("./routers/forgotPassword");
 const authenticationRouter = require("./routers/authentication");
-const upload=require('./routers/upload');
+const upload = require("./routers/upload");
 const passport = require("passport");
 const rateLimiter = require("./config/rateLimiter");
 
@@ -35,11 +39,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/public", express.static(path.join(__dirname, "public")));
 
 require("./config/passport2")(passport);
 
-app.use("/upload",upload)
+app.use("/upload", upload);
 app.use("/", authenticationRouter);
 app.use("/", indexRouter);
 app.use("/", doListRouter);
@@ -50,13 +53,13 @@ app.use("/", changePasswordRouter);
 app.use("/", forgotPasswordRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
