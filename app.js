@@ -2,10 +2,13 @@ const createError = require("http-errors");
 const express = require("express");
 const app = express();
 const path = require("path");
+const serveStatic = require('serve-static');
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
 const cors = require('cors')
+
+app.use(serveStatic(__dirname + "/dist"));
 app.use(cors())
 app.use(helmet());
 const indexRouter = require("./routers/index");
