@@ -8,13 +8,21 @@ const logger = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 
-// app.use(express.static(__dirname + "/dist/"));
-app.use(serveStatic(__dirname + "/dist"));
 app.use(cors());
-
+app.use(serveStatic(__dirname + "/dist"));
 app.use(helmet());
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
 
-const indexRouter = require("./routers/index");
+server.listen(80);
+
+io.on("connection", (socket) => {
+  socket.emit("news", { hello: "world" });
+  socket.on("my other event", (data) => {
+    console.log(data);
+  });
+});
+
 const doListRouter = require("./routers/doList");
 const adminRouter = require("./routers/admin");
 const registerRouter = require("./routers/register");
@@ -42,17 +50,15 @@ require("./config/passport2")(passport);
 
 app.use("/upload", upload);
 app.use("/", authenticationRouter);
-app.use("/", indexRouter);
 app.use("/", doListRouter);
 app.use("/", adminRouter);
 app.use("/", registerRouter);
 app.use("/", verifyRouter);
 app.use("/", changePasswordRouter);
 app.use("/", forgotPasswordRouter);
-// app.get(/.*/, function (req, res) {
-//   res.sendFile(__dirname + "/dist/index.html");
-// });
-
+app.get(/.*/, function (req, res) {
+  res.sendFile(__dirname + "/dist/index.html");
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

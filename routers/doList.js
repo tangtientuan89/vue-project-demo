@@ -63,8 +63,12 @@ router.post("/api/to-do-list", checkUsers, function (req, res, next) {
   console.log("locals: ", req.body);
   console.log("locals2: ", author);
   DoListModel.create({ title: title, content: content, author: author })
-    .then(function (value) {
-      res.json(value);
+    .then(function (data) {
+      res.json({
+        code: 200,
+        data: data,
+        message: "success",
+      });
     })
     .catch(function (err) {
       res.json({ message: err });
@@ -77,8 +81,12 @@ router.put("/api/to-do-list", checkUsers, function (req, res, next) {
   let content = req.body.content;
   let title = req.body.title;
   DoListModel.update({ _id: id }, { title: title, content: content })
-    .then(function (value) {
-      res.json(value);
+    .then(function (data) {
+      res.json({
+        code: 200,
+        data: data,
+        message: "success",
+      });
     })
     .catch(function (err) {
       res.json({
@@ -94,8 +102,12 @@ router.delete("/api/to-do-list", checkUsers, function (req, res, next) {
   let id = req.query.id;
   console.log('id',id)
   DoListModel.deleteOne({ _id: id })
-    .then(function (value) {
-      res.json(value);
+    .then(function (data) {
+      res.json({
+        code: 200,
+        data: data,
+        message: "success",
+      });
     })
     .catch(function (err) {
       res.json({
